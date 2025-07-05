@@ -19,11 +19,11 @@
 
       <!-- Navigation -->
       <nav class="flex flex-col gap-3 mt-6">
-        <RouterLink to="/" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition">Dashboard</RouterLink>
-        <RouterLink to="/transactions" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition">Transactions</RouterLink>
-        <RouterLink to="/accounts" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition">Accounts</RouterLink>
-        <RouterLink to="/analytics" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition">Analytics</RouterLink>
-        <RouterLink to="/settings" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition">Settings</RouterLink>
+        <RouterLink to="/" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition" active-class="bg-green-600 text-white">Dashboard</RouterLink>
+        <RouterLink to="/transactions" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition" active-class="bg-green-600 text-white">Transactions</RouterLink>
+        <RouterLink to="/accounts" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition" active-class="bg-green-600 text-white">Accounts</RouterLink>
+        <RouterLink to="/analytics" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition" active-class="bg-green-600 text-white">Analytics</RouterLink>
+        <RouterLink to="/settings" class="text-green-500 rounded px-3 py-2 hover:bg-green-900 hover:text-green-300 transition" active-class="bg-green-600 text-white">Settings</RouterLink>
       </nav>
     </div>
 
