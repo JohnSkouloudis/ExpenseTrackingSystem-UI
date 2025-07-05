@@ -7,13 +7,15 @@ import Analytics from '../views/Analytics.vue';
 import Transactions from '../views/Transactions.vue';
 import Accounts from '../views/Accounts.vue';
 import NotFound from '../views/NotFound.vue';
+import { clearToken, isAuthenticated } from '../store/user';
 
 
 const routes = [
     {
         path: '/',
         name: 'Dashboard',
-        component: Dashboard
+        component: Dashboard,
+        meta: { requiresAuth: true }
     },
     {
         path: '/login',
@@ -28,22 +30,26 @@ const routes = [
     {
         path: '/transactions',
         name: 'Transactions',
-        component: Transactions
+        component: Transactions,
+        meta: { requiresAuth: true }
     },
     {
         path: '/accounts',
         name: 'Accounts',
-        component: Accounts
+        component: Accounts,
+        meta: { requiresAuth: true }
     },
     {
         path: '/settings',
         name: 'Settings',
-        component: Settings
+        component: Settings,
+        meta: { requiresAuth: true }
     },
     {
         path: '/analytics',
         name: 'Analytics',
-        component: Analytics
+        component: Analytics,
+        meta: { requiresAuth: true }
     },
     {
     path: '/:pathMatch(.*)*',
@@ -57,5 +63,16 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes
 });
+
+router.beforeEach((to, from, next) => {
+
+  if (to.meta.requiresAuth && !isAuthenticated() ) {
+
+    next('/login')
+    clearToken();
+  } else {
+    next()
+  }
+})
 
 export default router;
