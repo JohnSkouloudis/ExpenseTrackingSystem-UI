@@ -4,7 +4,6 @@
       class="w-full max-w-xl min-h-[600px] bg-[#1c1f24] border-2 border-green-500 rounded-xl shadow-xl p-10 flex flex-col justify-center"
     >
       <div class="flex flex-col items-center">
-        <!-- Logo icon -->
         <div class="bg-green-600 text-white p-3 rounded-full mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -16,32 +15,29 @@
         <p class="text-gray-400 text-sm mb-6">Sign in to your ExpenseTracker account</p>
       </div>
 
-      <!-- Form -->
-      <form class="space-y-6">
+      <p v-if="errorMessage" class="text-red-500 text-sm mb-4 text-center">{{ errorMessage }}</p>
+
+      <form @submit.prevent="handleLogin" class="space-y-6">
         <div>
-          <label class="text-white text-sm block mb-1">Email</label>
+          <label class="text-white text-sm block mb-1">Username</label>
           <input
-            type="email"
-            placeholder="your@email.com"
+            v-model="username"
+            type="text"
+            placeholder="Your username"
             class="w-full px-4 py-2 bg-[#2a2e35] text-white rounded-md border border-[#3a3f46] focus:outline-none focus:ring-2 focus:ring-green-600"
+            required
           />
         </div>
 
         <div>
           <label class="text-white text-sm block mb-1">Password</label>
-          <div class="relative">
-            <input
-              type="password"
-              placeholder="Enter your password"
-              class="w-full px-4 py-2 bg-[#2a2e35] text-white rounded-md border border-[#3a3f46] focus:outline-none focus:ring-2 focus:ring-green-600"
-            />
-            <span class="absolute inset-y-0 right-3 flex items-center text-gray-400 cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 01-6 0m6 0a3 3 0 00-6 0m6 0a6 6 0 01-6 0M4 12c2-4 6-7 8-7s6 3 8 7-6 7-8 7-6-3-8-7z" />
-              </svg>
-            </span>
-          </div>
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Enter your password"
+            class="w-full px-4 py-2 bg-[#2a2e35] text-white rounded-md border border-[#3a3f46] focus:outline-none focus:ring-2 focus:ring-green-600"
+            required
+          />
         </div>
 
         <button
@@ -59,3 +55,27 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { login } from '../services/auth'
+
+const username = ref('')
+const password = ref('')
+const errorMessage = ref('')
+const router = useRouter()
+
+const handleLogin = async () => {
+  errorMessage.value = ''
+  const status = await login(username.value, password.value)
+
+  if (status === 200) {
+    router.push('/')
+  } else if (status === 401) {
+    errorMessage.value = 'Invalid username or password.'
+  } else {
+    errorMessage.value = 'Login failed. Please try again.'
+  }
+}
+</script>
