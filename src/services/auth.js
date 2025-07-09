@@ -1,12 +1,13 @@
 import api from './api';
-import { setToken } from '../store/user';
+import { setUserData } from '../store/user';
 
 export async function login(username, password) {
 
     try {
         const response = await api.post('/auth/login', { username, password });
         const  token  = response.data.token;
-        setToken(token);
+        const usedId = response.data.userId;
+        setUserData(token, usedId);
         return response.status;
     } catch (error) {
         if (error.response) {
