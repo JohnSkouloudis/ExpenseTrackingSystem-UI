@@ -7,7 +7,8 @@ import Analytics from '../views/Analytics.vue';
 import Transactions from '../views/Transactions.vue';
 import Accounts from '../views/Accounts.vue';
 import NotFound from '../views/NotFound.vue';
-import { clearToken, isAuthenticated } from '../store/user';
+import addAccount from '../views/addAccount.vue';
+import {  clearUserData, isAuthenticated } from '../store/user';
 
 
 const routes = [
@@ -31,6 +32,12 @@ const routes = [
         path: '/transactions',
         name: 'Transactions',
         component: Transactions,
+        meta: { requiresAuth: true }
+    },
+    {
+        path:'/addAccount',
+        name: 'addAccount',
+        component: addAccount,
         meta: { requiresAuth: true }
     },
     {
@@ -69,7 +76,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !isAuthenticated() ) {
 
     next('/login')
-    clearToken();
+    clearUserData();
   } else {
     next()
   }
