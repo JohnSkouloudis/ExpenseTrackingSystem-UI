@@ -1,0 +1,62 @@
+[
+  {
+    "type": "INCOME",
+    "count": 15,
+    "subcategories": [
+      {
+        "name": "SALARY",
+        "count": 8
+      },
+      {
+        "name": "FREELANCE",
+        "count": 3
+      },
+      {
+        "name": "DIVIDENDS",
+        "count": 2
+      },
+      {
+        "name": "GIFTS",
+        "count": 1
+      },
+      {
+        "name": "BONUS",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "type": "EXPENSE",
+    "count": 35,
+    "subcategories": [
+      {
+        "name": "FOOD",
+        "count": 10
+      },
+      {
+        "name": "TRANSPORT",
+        "count": 5
+      },
+      {
+        "name": "ENTERTAINMENT",
+        "count": 4
+      },
+      {
+        "name": "UTILITIES",
+        "count": 6
+      },
+      {
+        "name": "HEALTHCARE",
+        "count": 3
+      },
+      {
+        "name": "SHOPPING",
+        "count": 4
+      },
+      {
+        "name": "TRAVEL",
+        "count": 3
+      }
+    ]
+  }
+]
