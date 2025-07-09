@@ -27,9 +27,9 @@
       </nav>
     </div>
 
-    <!-- Logout Button at the bottom -->
+    
     <div class="pt-4 border-t border-gray-700">
-      <button
+      <button @click="handleLogout"
         class="flex items-center gap-2 text-white hover:bg-[#1a1a1a] hover:text-gray-300 transition-all px-2 py-2 rounded-md w-full"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,9 +44,16 @@
 </template>
 
 <script setup>
-// no logic needed yet
+import { useRouter } from 'vue-router';
+import { clearToken } from '../store/user';
+
+const router = useRouter();
+
+function handleLogout() {
+
+  clearToken();
+  router.push('/login');
+}
+
 </script>
 
-<style scoped>
-/* Optional custom styles */
-</style>
