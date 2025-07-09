@@ -45,13 +45,13 @@
 
 <script setup>
 import { useRouter } from 'vue-router';
-import { clearToken } from '../store/user';
+import { clearUserData } from '../store/user';
 
 const router = useRouter();
 
 function handleLogout() {
 
-  clearToken();
+  clearUserData();
   router.push('/login');
 }
 

@@ -33,7 +33,7 @@ const chartData = computed(() => {
 
   props.categoriesSummary.forEach(cat => {
     if (drilledTypes.value.includes(cat.type) && cat.subcategories?.length) {
-      // Expanded: add subcategories
+      
       cat.subcategories.forEach(sub => {
         labels.push(sub.name)
         data.push(sub.count)
