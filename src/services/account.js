@@ -3,12 +3,7 @@ import { getUserId } from "../store/user";
 
 export function getPaginatedAccounts( page, pageSize) {
     const userId = getUserId();
-    return api.get(`/accounts/${userId}/${page}?size=${pageSize}`, {
-        params: {
-            page: page,
-            pageSize: pageSize
-        }
-    });
+    return api.get(`/accounts/${userId}/${page}?size=${pageSize}`);
 }
 
 export function addAccount(accountName,balance){
@@ -21,4 +16,9 @@ export function addAccount(accountName,balance){
         }
 
     );
+}
+
+export function getUserAccounts() {
+    const userId = getUserId();
+    return api.get(`/accounts/${userId}`);
 }
