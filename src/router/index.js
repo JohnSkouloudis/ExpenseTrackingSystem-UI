@@ -9,6 +9,7 @@ import Accounts from '../views/Accounts.vue';
 import NotFound from '../views/NotFound.vue';
 import addAccount from '../views/addAccount.vue';
 import {  clearUserData, isAuthenticated } from '../store/user';
+import addTransaction from '../views/addTransaction.vue';
 
 
 const routes = [
@@ -32,6 +33,12 @@ const routes = [
         path: '/transactions',
         name: 'Transactions',
         component: Transactions,
+        meta: { requiresAuth: true }
+    },
+    {
+        path: '/addTransaction',
+        name: 'addTransaction',
+        component: addTransaction,
         meta: { requiresAuth: true }
     },
     {
