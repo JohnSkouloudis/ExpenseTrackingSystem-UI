@@ -41,3 +41,25 @@ export function addTransaction(formData) {
 export function getAllCategories() {
   return api.get('/category/all')
 }
+
+export function getTransactionDetails(transactionId) {
+  return api.get(`/transactions/details/${transactionId}`)
+}
+
+export function exportToCSV(startDate, endDate){
+  return api.get(`/transactions/exportToCsv?startDate=${startDate}&endDate=${endDate}`, {
+    responseType: 'blob'
+  })
+    .then(response => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'transactions.csv');
+      document.body.appendChild(link);
+      link.click();
+    })
+    .catch(error => {
+      console.error('Failed to export transactions:', error);
+      throw error;
+    });
+}
