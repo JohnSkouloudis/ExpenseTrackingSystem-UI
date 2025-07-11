@@ -1,7 +1,7 @@
 <template>
   
   <div class="w-full max-w-lg mx-auto">
-    <h2 class="text-2xl font-bold mb-4 text-center">Categories Summary</h2>
+    <h2 class="text-2xl font-bold mb-4  text-white text-center">Categories Summary</h2>
     <Pie ref="pieRef" :data="chartData" :options="chartOptions" @click="handleClick" />
   </div>
 </template>
