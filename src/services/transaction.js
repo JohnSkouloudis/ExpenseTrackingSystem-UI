@@ -63,3 +63,20 @@ export function exportToCSV(startDate, endDate){
       throw error;
     });
 }
+
+export async function getRecentTransactions(accountId,page, pageSize) {
+
+  try {
+    const response = await api.get(`/transactions/${accountId}/${page}?size=${pageSize}&sortByDate=true`)
+    return response
+  } catch (error) {
+    console.error('Failed to fetch transactions:', error)
+    throw error
+  }
+}
+
+export function getTransactionsByDateRange(accountId, startDate, endDate) {
+  return api.get(`/transactions/${accountId}`, {
+    params: { startDate, endDate }
+  })
+}
