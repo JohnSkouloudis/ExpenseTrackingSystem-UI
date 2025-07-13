@@ -42,6 +42,10 @@ export function getAllCategories() {
   return api.get('/category/all')
 }
 
+export function getSubcategories(parentName) {
+  return api.get(`/category/${parentName}`)
+}
+
 export function getTransactionDetails(transactionId) {
   return api.get(`/transactions/details/${transactionId}`)
 }
