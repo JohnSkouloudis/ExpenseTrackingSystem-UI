@@ -10,6 +10,8 @@ import NotFound from '../views/NotFound.vue';
 import addAccount from '../views/addAccount.vue';
 import {  clearUserData, isAuthenticated } from '../store/user';
 import addTransaction from '../views/addTransaction.vue';
+import UserSettings from '../views/UserSettings.vue';
+import BudgetSettings from '../views/BudgetSettings.vue';
 
 
 const routes = [
@@ -57,7 +59,12 @@ const routes = [
         path: '/settings',
         name: 'Settings',
         component: Settings,
-        meta: { requiresAuth: true }
+        meta: { requiresAuth: true },
+        children: [
+      {path: '', redirect: '/settings/user' },
+      { path: 'user', component: UserSettings },
+      { path: 'budget', component: BudgetSettings }
+    ]
     },
     {
         path: '/analytics',
