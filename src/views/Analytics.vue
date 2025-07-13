@@ -5,6 +5,9 @@
       <PieChart v-if="categoriesSummary.length" :categoriesSummary="categoriesSummary" />
       <p v-else class="text-gray-400">Loading data...</p>
     </ChartBox>
+    <ChartBox>
+      <IncomeExpenseMonthlyBarChart />
+    </ChartBox>
   </div>
 </template>
 
@@ -14,6 +17,7 @@ import { ref, onMounted } from 'vue'
 import PieChart from '../components/PieChart.vue'
 import { getCategoriesSummary } from '../services/transaction'
 import ChartBox from '../components/ChartBox.vue'
+import IncomeExpenseMonthlyBarChart from '../components/IncomeExpenseMonthlyBarChart.vue'
 
 const categoriesSummary = ref([])
 
