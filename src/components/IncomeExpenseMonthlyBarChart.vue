@@ -17,7 +17,7 @@
       :data="chartData"
       :options="chartOptions"
         />
-        <p v-else class="text-gray-400">Loading...</p>
+        <p v-else class="text-gray-400">Loading data...</p>
     </div>
   </div>
 </template>
@@ -60,7 +60,7 @@ async function fetchChartData() {
   const startDate = `${year}-01-01`
   const endDate = `${year}-12-31`
 
-  // 1. Get all accounts
+  
   const accountsResponse = await getUserAccounts()
   const accounts = accountsResponse.data
 
@@ -69,11 +69,11 @@ async function fetchChartData() {
   const expenseCategoryNames = expenseSubcategories.map(sc => sc.categoryName)
    
 
-  // 2. Initialize monthly sums
+  
   const income = Array(12).fill(0)
   const expense = Array(12).fill(0)
 
-  // 3. For each account, fetch transactions and sum
+  
   for (const account of accounts) {
     const txResponse = await getTransactionsByDateRange(account.id, startDate, endDate)
     const txs = txResponse.data
