@@ -8,6 +8,14 @@
     <ChartBox>
       <IncomeExpenseMonthlyBarChart />
     </ChartBox>
+    <ChartBox>
+      <IncomeExpenseLineChart />
+    </ChartBox>
+    <ChartBox>
+      <ExpensesBarChart />
+    </ChartBox>
+      
+    
   </div>
 </template>
 
@@ -18,6 +26,8 @@ import PieChart from '../components/PieChart.vue'
 import { getCategoriesSummary } from '../services/transaction'
 import ChartBox from '../components/ChartBox.vue'
 import IncomeExpenseMonthlyBarChart from '../components/IncomeExpenseMonthlyBarChart.vue'
+import IncomeExpenseLineChart from '../components/IncomeExpenseLineChart.vue'
+import ExpensesBarChart from '../components/ExpensesBarChart.vue'
 
 const categoriesSummary = ref([])
 
