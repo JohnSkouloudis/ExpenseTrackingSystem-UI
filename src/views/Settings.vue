@@ -26,6 +26,14 @@
         >
           Budget
         </RouterLink>
+        <RouterLink
+          to="/settings/scheduledTransactions"
+          class="text-white rounded px-3 py-2 hover:bg-green-900 hover:text-white transition"
+          active-class="bg-green-700 text-white"
+          exact-active-class="bg-green-700 text-white"
+        >
+          scheduledTransactions
+        </RouterLink>
       </nav>
     </aside>
     <!-- Main content from child routes -->
