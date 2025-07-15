@@ -40,6 +40,13 @@ import { getTransactionsByDateRange, getAllCategories } from '../services/transa
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale, annotationPlugin)
 
+const budgetAmount = ref(0)
+const budgetStart = ref('')
+const budgetEnd = ref('')
+const budgetPeriodLabel = ref('')
+
+let maxValue = 1000
+
 const chartData = ref(null)
 const chartOptions = {
   responsive: true,
@@ -80,7 +87,7 @@ const chartOptions = {
       },
       limits: {
         x: { min: -50 },
-        y: { min: -50 }
+        y: { min: -50 ,max:undefined }
       }
     }
   },
@@ -99,10 +106,6 @@ const chartOptions = {
   }
 }
 
-const budgetAmount = ref(0)
-const budgetStart = ref('')
-const budgetEnd = ref('')
-const budgetPeriodLabel = ref('')
 
 function formatDate(d) {
   return d.toISOString().split('T')[0]
@@ -123,6 +126,9 @@ async function fetchChartData() {
   budgetEnd.value = budgetRes.data.endDate
   budgetPeriodLabel.value = `${budgetStart.value} to ${budgetEnd.value}`
 
+  chartOptions.scales.y.max = budgetAmount.value + 50
+  chartOptions.scales.y.max = budgetAmount.value + 50
+  chartOptions.plugins.zoom.limits.y.max = budgetAmount.value + 50
   
   const accountsRes = await getUserAccounts()
   const accounts = accountsRes.data
