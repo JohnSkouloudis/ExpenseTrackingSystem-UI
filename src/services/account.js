@@ -22,3 +22,11 @@ export function getUserAccounts() {
     const userId = getUserId();
     return api.get(`/accounts/${userId}`);
 }
+
+export function deleteAccount(accountId) {
+    return api.delete(`/accounts/delete/${accountId}`);
+}
+
+export function updateAccount(account) {
+    return api.put(`/accounts/update`, account);
+}
