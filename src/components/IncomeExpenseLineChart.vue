@@ -10,7 +10,7 @@
         dark
         class="w-32"
       />
-      <!-- Keep the groupBy select if you want (optional) -->
+      
       <select
         v-model="groupBy"
         class="ml-4 px-2 py-1 rounded bg-neutral-700 text-white focus:outline-none focus:ring focus:ring-green-500"
@@ -20,7 +20,7 @@
         <option value="week">By Week</option>
       </select>
     </div>
-    <div class="bg-neutral-800 rounded-xl p-6 w-full min-h-[500px] flex items-center justify-center custom-scrollbar">
+    <div class="bg-neutral-800 rounded-xl p-6 w-full min-h-[500px] flex items-center justify-center ">
       <Line
         v-if="chartData"
         :data="chartData"
@@ -52,14 +52,14 @@ const monthLabels = [
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
 ]
 
-// Dynamically generate week labels
+
 function getWeekLabels(year) {
   const labels = []
   const date = new Date(year, 0, 1)
   let week = 1
   while (date.getFullYear() === year) {
     labels.push(`Week ${week}`)
-    // Move to next week
+    
     date.setDate(date.getDate() + 7)
     week++
   }
@@ -102,7 +102,7 @@ async function fetchChartData() {
   const startDate = `${year}-01-01`
   const endDate = `${year}-12-31`
 
-  // Get all user accounts
+  
   const accountsResponse = await getUserAccounts()
   const accounts = accountsResponse.data
 
@@ -122,7 +122,7 @@ async function fetchChartData() {
     expense = Array(labels.length).fill(0)
   }
 
-  // For each account, fetch transactions and group
+  
   for (const account of accounts) {
     const txResponse = await getTransactionsByDateRange(account.id, startDate, endDate)
     const txs = txResponse.data
@@ -132,7 +132,7 @@ async function fetchChartData() {
       if (groupBy.value === 'month') {
         idx = txDate.getMonth()
       } else {
-        // week of year (starting from 0)
+        
         const firstDay = new Date(year, 0, 1)
         const days = Math.floor((txDate - firstDay) / (1000 * 60 * 60 * 24))
         idx = Math.floor(days / 7)
@@ -180,21 +180,24 @@ watch([selectedYear, groupBy], fetchChartData)
 onMounted(fetchChartData)
 </script>
 
+
 <style scoped>
+/*
 .custom-scrollbar::-webkit-scrollbar {
   height: 8px;
 }
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #4ade80;      /* Tailwind's green-400 */
+  background: #4ade80;      
   border-radius: 4px;
 }
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #222;         /* or bg-neutral-800 */
+  background: #222;         
   border-radius: 4px;
 }
-/* Firefox */
+
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #4ade80 #222;
 }
+*/
 </style>

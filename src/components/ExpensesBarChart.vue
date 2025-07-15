@@ -82,19 +82,19 @@ async function fetchChartData() {
 const accounts = accountsResponse.data
 const categories = categoriesResponse.data
 
-// Get a Set of all INCOME subcategory names for fast lookup
+
 const incomeSubcategoryNames = new Set(incomeSubcategoriesResponse.data.map(sc => sc.categoryName))
 
-// Filter: Exclude categories that are in INCOME subcategories
+
 const filteredCategories = categories.filter(
   c => !incomeSubcategoryNames.has(c.categoryName) && c.categoryName !== 'INCOME'
 )
 
-  // Map: categoryName -> total amount
+  
   const expenseTotals = {}
   filteredCategories.forEach(cat => { expenseTotals[cat.categoryName] = 0 })
 
-  // For each account, fetch transactions and add up expenses per category
+  
   for (const account of accounts) {
     const txResponse = await getTransactionsByDateRange(account.id, startDate, endDate)
     const txs = txResponse.data
@@ -105,7 +105,7 @@ const filteredCategories = categories.filter(
     })
   }
 
-  // Prepare chart data arrays
+  
   const categoryLabels = Object.keys(expenseTotals)
   const categoryAmounts = Object.values(expenseTotals)
 

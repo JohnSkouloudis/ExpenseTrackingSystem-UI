@@ -53,7 +53,7 @@ const months = [
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
 ]
 
-// Loads transactions and prepares the chart data
+
 async function fetchChartData() {
   chartData.value = null
   const year = selectedYear.value
