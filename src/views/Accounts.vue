@@ -2,7 +2,7 @@
   <div class="p-6">
     <h1 class="text-2xl font-bold text-white mb-4">Your Bank Accounts</h1>
 
-    <!-- Create Account button -->
+    
     <button
       @click="goToAddAccount"
       class="mb-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
@@ -19,7 +19,7 @@
           class="bg-neutral-800 rounded-lg p-4 text-white flex justify-between items-center"
         >
           <div class="flex-1 flex gap-2 items-center">
-            <!-- Edit Mode -->
+            
             <template v-if="editingId === account.id">
               <input
                 v-model="editFields.accountName"
@@ -34,7 +34,7 @@
                 style="width: 100px"
               />
             </template>
-            <!-- Display Mode -->
+            
             <template v-else>
               <div>
                 <p class="font-semibold">{{ account.accountName }}</p>
@@ -43,7 +43,7 @@
             </template>
           </div>
           <div class="flex gap-2">
-            <!-- Edit Buttons -->
+            
             <template v-if="editingId === account.id">
               <button
                 @click="() => confirmUpdate(account)"
@@ -58,7 +58,7 @@
                 Cancel
               </button>
             </template>
-            <!-- Normal Buttons -->
+            
             <template v-else>
               <button
                 @click="() => startEditing(account)"
@@ -78,7 +78,7 @@
       </div>
       <div v-else class="text-gray-300">No accounts found.</div>
 
-      <!-- Pagination Controls -->
+      
       <div class="flex justify-center items-center gap-4 mt-6">
         <button
           :disabled="currentPage === 0"
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <!-- Delete Confirmation Modal -->
+    
     <div
       v-if="showDeleteConfirm"
       class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60"
@@ -136,14 +136,14 @@ const loading = ref(false)
 const lastPage = ref(false)
 const totalPages = ref(1)
 
-// Inline editing state
+
 const editingId = ref(null)
 const editFields = reactive({
   accountName: '',
   balance: ''
 })
 
-// Delete confirmation state
+
 const showDeleteConfirm = ref(false)
 const accountIdToDelete = ref(null)
 
@@ -178,7 +178,7 @@ function goToAddAccount() {
   router.push('/addAccount')
 }
 
-// --- Inline Edit logic ---
+
 function startEditing(account) {
   editingId.value = account.id
   editFields.accountName = account.accountName
@@ -188,7 +188,7 @@ function cancelEditing() {
   editingId.value = null
 }
 async function confirmUpdate(account) {
-  // Confirm update action
+  
   const confirmed = window.confirm(
     "Are you sure you want to update this account?"
   )
@@ -210,7 +210,7 @@ async function confirmUpdate(account) {
   }
 }
 
-// --- Delete logic ---
+
 function handleDelete(id) {
   accountIdToDelete.value = id
   showDeleteConfirm.value = true
