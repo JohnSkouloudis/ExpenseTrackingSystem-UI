@@ -28,8 +28,8 @@ import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
-import { getTransactionsByDateRange,getSubcategories } from '../services/transaction'
-import{ getUserAccounts} from '../services/account'
+import { getTransactionsByDateRange,getSubcategories } from '../../services/transaction'
+import{ getUserAccounts} from '../../services/account'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 

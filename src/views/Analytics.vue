@@ -27,14 +27,14 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import PieChart from '../components/PieChart.vue'
+import PieChart from '../components/charts/PieChart.vue'
 import { getCategoriesSummary } from '../services/transaction'
 import ChartBox from '../components/ChartBox.vue'
-import IncomeExpenseMonthlyBarChart from '../components/IncomeExpenseMonthlyBarChart.vue'
-import IncomeExpenseLineChart from '../components/IncomeExpenseLineChart.vue'
-import ExpensesBarChart from '../components/ExpensesBarChart.vue'
-import CategorySpendingTrendsLineChart from '../components/CategorySpendingTrendsLineChart.vue'
-import ExpensesBudgetPeriodChart from '../components/ExpensesBudgetPeriodChart.vue'
+import IncomeExpenseMonthlyBarChart from '../components/charts/IncomeExpenseMonthlyBarChart.vue'
+import IncomeExpenseLineChart from '../components/charts/IncomeExpenseLineChart.vue'
+import ExpensesBarChart from '../components/charts/ExpensesBarChart.vue'
+import CategorySpendingTrendsLineChart from '../components/charts/CategorySpendingTrendsLineChart.vue'
+import ExpensesBudgetPeriodChart from '../components/charts/ExpensesBudgetPeriodChart.vue'
 
 const categoriesSummary = ref([])
 

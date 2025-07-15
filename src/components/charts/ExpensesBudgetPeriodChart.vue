@@ -34,9 +34,9 @@ import {
   Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale
 } from 'chart.js'
 import annotationPlugin from 'chartjs-plugin-annotation'
-import { getUserBudget } from '../services/budget'
-import { getUserAccounts } from '../services/account'
-import { getTransactionsByDateRange, getAllCategories } from '../services/transaction'
+import { getUserBudget } from '../../services/budget'
+import { getUserAccounts } from '../../services/account'
+import { getTransactionsByDateRange, getAllCategories } from '../../services/transaction'
 
 ChartJS.register(Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale, annotationPlugin)
 
