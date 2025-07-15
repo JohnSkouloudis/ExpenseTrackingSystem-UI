@@ -14,6 +14,9 @@
     <ChartBox>
       <ExpensesBarChart />
     </ChartBox>
+    <ChartBox>
+      <CategorySpendingTrendsLineChart />
+    </ChartBox>
       
     
   </div>
@@ -28,6 +31,7 @@ import ChartBox from '../components/ChartBox.vue'
 import IncomeExpenseMonthlyBarChart from '../components/IncomeExpenseMonthlyBarChart.vue'
 import IncomeExpenseLineChart from '../components/IncomeExpenseLineChart.vue'
 import ExpensesBarChart from '../components/ExpensesBarChart.vue'
+import CategorySpendingTrendsLineChart from '../components/CategorySpendingTrendsLineChart.vue'
 
 const categoriesSummary = ref([])
 
