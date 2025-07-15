@@ -1,9 +1,9 @@
 <template>
-  <div class="p-4 max-w-6xl w-full mx-auto">
-    <h2 class="text-xl font-bold text-white mb-4">
-      Expenses by Category Over Time — {{ selectedYear }}
+  <div class="p-6 max-w-5xl mx-auto w-full">
+    <h2 class="text-2xl font-bold text-white mb-6">
+      Expenses by Category Over Time 
     </h2>
-    <div class="flex items-center gap-3 mb-4">
+    <div class="mb-4 flex items-center gap-4">
       <span class="text-gray-300">Year:</span>
       <VueDatePicker
         v-model="selectedYear"
@@ -20,7 +20,7 @@
         <option value="week">By Week</option>
       </select>
     </div>
-    <div class="bg-neutral-800 rounded-xl p-4 w-full min-h-[400px]">
+    <div class="bg-neutral-800 rounded-xl p-6 w-full min-h-[500px] flex items-center justify-center ">
       <Line
         v-if="chartData"
         :data="chartData"
@@ -28,7 +28,7 @@
         :height="400"
         :width="1200"
       />
-      <p v-else class="text-gray-400">Loading...</p>
+      <p v-else class="text-gray-400">Loading data...</p>
     </div>
   </div>
 </template>
