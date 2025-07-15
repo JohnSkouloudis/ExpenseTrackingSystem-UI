@@ -17,7 +17,7 @@
         :data="chartData"
         :options="chartOptions"
       />
-      <p v-else class="text-gray-400">Loading...</p>
+      <p v-else class="text-gray-400">Loading data...</p>
     </div>
   </div>
 </template>
