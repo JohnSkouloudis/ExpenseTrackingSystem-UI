@@ -89,9 +89,18 @@ const chartOptions = {
   }
   },
   scales: {
-  x: { grid: { display: false }, ticks: { color: '#fff' } },
-  y: { grid: { display: false }, ticks: { color: '#fff' }, beginAtZero: true }
-}
+    x: {
+      ticks: { color: '#fff' },
+      grid: { color: '#333' },
+      border: { color: '#fff' }
+    },
+    y: {
+      ticks: { color: '#fff' },
+      grid: { color: '#333' },
+      border: { color: '#fff' },
+      beginAtZero: true
+    }
+  }
 }
 
 const periodLabel = computed(() => groupBy.value === 'week' ? 'by week' : 'by month')

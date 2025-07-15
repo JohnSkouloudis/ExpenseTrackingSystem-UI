@@ -1,6 +1,6 @@
 <template>
   <div class="p-4 max-w-3xl w-full mx-auto">
-    <h2 class="text-xl font-bold text-white mb-4">Expenses by Category — {{ selectedYear }}</h2>
+    <h2 class="text-2xl font-bold text-white mb-6">Expenses by Category </h2>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-gray-300">Year:</span>
       <VueDatePicker

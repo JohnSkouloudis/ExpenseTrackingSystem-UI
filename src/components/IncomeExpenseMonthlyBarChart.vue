@@ -43,8 +43,8 @@ const chartOptions = {
     title: { display: false }
   },
   scales: {
-    x: { ticks: { color: '#fff' }, grid: { color: '#333' } },
-    y: { ticks: { color: '#fff' }, grid: { color: '#333' }, beginAtZero: true }
+    x: { ticks: { color: '#fff' }, grid: { color: '#333' },border: { color: '#fff' } },
+    y: { ticks: { color: '#fff' }, grid: { color: '#333' },border: { color: '#fff' }, beginAtZero: true }
   }
 }
 
