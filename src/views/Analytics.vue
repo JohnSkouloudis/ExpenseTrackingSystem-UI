@@ -17,7 +17,9 @@
     <ChartBox>
       <CategorySpendingTrendsLineChart />
     </ChartBox>
-      
+    <ChartBox>
+      <ExpensesBudgetPeriodChart />
+    </ChartBox>
     
   </div>
 </template>
@@ -32,6 +34,7 @@ import IncomeExpenseMonthlyBarChart from '../components/IncomeExpenseMonthlyBarC
 import IncomeExpenseLineChart from '../components/IncomeExpenseLineChart.vue'
 import ExpensesBarChart from '../components/ExpensesBarChart.vue'
 import CategorySpendingTrendsLineChart from '../components/CategorySpendingTrendsLineChart.vue'
+import ExpensesBudgetPeriodChart from '../components/ExpensesBudgetPeriodChart.vue'
 
 const categoriesSummary = ref([])
 
