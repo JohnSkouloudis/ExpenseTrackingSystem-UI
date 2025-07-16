@@ -63,6 +63,7 @@ const colorPalette = [
   '#ef4444', '#f59e42', '#facc15', '#22c55e', '#3b82f6',
   '#a855f7', '#ec4899', '#14b8a6', '#f87171', '#0ea5e9', '#a3e635'
 ]
+  
 
 const chartOptions = {
   responsive: true,
@@ -81,7 +82,7 @@ const chartOptions = {
   }
 }
 
-// Fetch all accounts on mount
+
 onMounted(async () => {
   const accRes = await getUserAccounts()
   accounts.value = accRes.data
@@ -94,7 +95,7 @@ onMounted(async () => {
 
 watch([selectedYear, selectedAccountId], fetchChartData)
 
-// Get all categories and subcategories to filter for EXPENSE
+
 async function fetchExpenseCategories() {
   const [allCats, expenseSubs] = await Promise.all([
     getAllCategories(),
@@ -106,19 +107,24 @@ async function fetchExpenseCategories() {
     .map(cat => cat.categoryName)
 }
 
-// Fetch and prepare chart data
+
 async function fetchChartData() {
+
+  
   chartData.value = null
   if (!selectedAccountId.value || !selectedYear.value) return
+  
   const year = selectedYear.value
   const startDate = `${year}-01-01`
   const endDate = `${year}-12-31`
+  
   await fetchExpenseCategories()
 
   const txRes = await getTransactionsByDateRange(selectedAccountId.value, startDate, endDate)
   const txs = txRes.data
 
-  // Sum by category
+
+  
   const sums = {}
   expenseCategories.value.forEach(cat => { sums[cat] = 0 })
   txs.forEach(tx => {
@@ -127,11 +133,12 @@ async function fetchChartData() {
     }
   })
 
-  // Only categories with actual expenses (>0)
+  
   const labels = []
   const data = []
   const backgroundColors = []
 
+  
   expenseCategories.value.forEach((cat, idx) => {
     if (sums[cat] > 0) {
       labels.push(cat)
