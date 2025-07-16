@@ -54,7 +54,7 @@ const barColors = [
 const selectedYear = ref(new Date().getFullYear())
 const chartData = ref(null)
 const chartOptions = {
-  indexAxis: 'y',   // <--- Makes it horizontal!
+  indexAxis: 'y',   
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
