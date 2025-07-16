@@ -23,7 +23,12 @@
     <ChartBox>
       <IncomeTreeMapChart />
     </ChartBox>
-    
+    <ChartBox>
+      <AccountBarChart />
+    </ChartBox>
+    <ChartBox>
+      <ExpensesPerAccountBarChart />
+    </ChartBox>
     
   </div>
 </template>
@@ -40,6 +45,8 @@ import ExpensesBarChart from '../components/charts/ExpensesBarChart.vue'
 import CategorySpendingTrendsLineChart from '../components/charts/CategorySpendingTrendsLineChart.vue'
 import ExpensesBudgetPeriodChart from '../components/charts/ExpensesBudgetPeriodChart.vue'
 import IncomeTreeMapChart from '../components/charts/IncomeProgressiveLineChart.vue'
+import AccountBarChart from '../components/charts/AccountBarChart.vue'
+import ExpensesPerAccountBarChart from '../components/charts/ExpensesPerAccountBarChart.vue'
 
 const categoriesSummary = ref([])
 
