@@ -51,7 +51,7 @@ import { getTransactionsByDateRange, getSubcategories, getAllCategories } from '
 ChartJS.register(Title, Tooltip, Legend, LineElement, PointElement, CategoryScale, LinearScale, zoomPlugin)
 
 const selectedYear = ref(new Date().getFullYear())
-const groupBy = ref('day') // 'day', 'week', 'month'
+const groupBy = ref('month') // 'day', 'week', 'month'
 const chartData = ref(null)
 const colorPalette = [
   '#22c55e', '#4ade80', '#86efac', '#a7f3d0', '#34d399',
