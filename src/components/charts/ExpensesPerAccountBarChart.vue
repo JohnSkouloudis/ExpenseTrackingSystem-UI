@@ -33,7 +33,7 @@
         :height="320"
         :width="700"
       />
-      <p v-else class="text-gray-400">Loading...</p>
+      <p v-else class="text-gray-400">Loading data...</p>
     </div>
   </div>
 </template>

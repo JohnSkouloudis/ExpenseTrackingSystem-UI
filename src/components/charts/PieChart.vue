@@ -38,12 +38,12 @@ const chartData = computed(() => {
       
       cat.subcategories.forEach(sub => {
         labels.push(sub.name)
-        data.push(sub.count)
+        data.push(sub.amount)
       })
     } else {
       
       labels.push(cat.type)
-      data.push(cat.count)
+      data.push(cat.amount)
     }
   })
 
