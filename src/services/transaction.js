@@ -84,3 +84,16 @@ export function getTransactionsByDateRange(accountId, startDate, endDate) {
     params: { startDate, endDate }
   })
 }
+
+export function getScheduledTransactions(){
+  return api.get('/transactions/scheduledTransactions/all')
+
+}
+
+export function deleteScheduledTransaction(scheduledTransactionId) {
+    return api.delete(`/transactions/scheduledTransactions/delete/${scheduledTransactionId}`)
+}
+
+export function createScheduledTransaction(formData) {
+  return api.post('/transactions/scheduledTransactions/add', formData)
+}

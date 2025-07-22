@@ -12,6 +12,7 @@ import {  clearUserData, isAuthenticated } from '../store/user';
 import addTransaction from '../views/addTransaction.vue';
 import UserSettings from '../views/UserSettings.vue';
 import BudgetSettings from '../views/BudgetSettings.vue';
+import ScheduledTransactionsSettings from '../views/ScheduledTransactionsSettings.vue';
 
 
 const routes = [
@@ -63,7 +64,8 @@ const routes = [
         children: [
       {path: '', redirect: '/settings/user' },
       { path: 'user', component: UserSettings },
-      { path: 'budget', component: BudgetSettings }
+      { path: 'budget', component: BudgetSettings },
+      { path: 'scheduledTransactions', component: ScheduledTransactionsSettings }
     ]
     },
     {
