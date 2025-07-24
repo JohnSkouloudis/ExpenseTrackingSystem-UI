@@ -3,7 +3,7 @@
     <h1 class="text-2xl font-bold text-white mb-4">Scheduled Transactions</h1>
     <div v-if="loading" class="text-gray-300">Loading...</div>
 
-    <!-- Desktop Table View -->
+    
     <div class="hidden lg:block">
       <div class="rounded-2xl border-4 border-green-600 bg-neutral-800 shadow-lg p-2">
       <table class="w-full text-gray-200 text-left rounded-xl bg-transparent">
@@ -33,7 +33,6 @@
                 class="px-2 py-1 bg-red-600 rounded hover:bg-red-700 text-white text-xs">Delete</button>
             </td>
           </tr>
-          <!-- Delete confirmation row -->
           <tr v-if="deleteConfirmId !== null">
             <td colspan="8" class="bg-neutral-800 text-red-400 text-center py-2">
               Are you sure you want to delete this scheduled transaction?
@@ -45,7 +44,6 @@
               </div>
             </td>
           </tr>
-          <!-- Add new transaction row -->
           <tr v-if="addingNew" class="bg-neutral-800">
             <td class="py-1 px-1 max-w-[160px]">
               <input v-model="newTransaction.description" required
@@ -56,7 +54,6 @@
               <input v-model.number="newTransaction.amount" required
                 type="number" class="bg-neutral-700 text-white px-2 py-1 rounded w-full text-sm" placeholder="Amount" />
             </td>
-            <!-- CREATED DATE - READONLY input with formatted value (always today) -->
             <td class="py-1 px-1 w-[160px]">
               <input
                 :value="formatDate(today)"
@@ -68,7 +65,6 @@
               <input v-model.number="newTransaction.frequencyInDays" required
                 type="number" class="bg-neutral-700 text-white px-2 py-1 rounded w-full text-sm" placeholder="Frequency" min="1" />
             </td>
-            <!-- EXECUTION DATE - DatePicker, not disabled -->
             <td class="py-1 px-1 w-[170px]">
               <DatePicker
                 required
@@ -105,7 +101,6 @@
       </div>
     </div>
 
-    <!-- Mobile/Card View -->
     <div class="space-y-4 lg:hidden">
       <div v-for="stx in scheduledTransactions.slice(0, 10)" :key="stx.id"
         class="rounded-xl bg-neutral-900 shadow-md p-4 flex flex-col gap-1 border border-neutral-700">
@@ -124,7 +119,6 @@
           <button @click="showDeleteConfirm(stx.id)"
             class="px-3 py-1 bg-red-600 rounded hover:bg-red-700 text-white text-xs">Delete</button>
         </div>
-        <!-- Delete confirm, only for this transaction -->
         <div v-if="deleteConfirmId === stx.id" class="mt-2 text-red-400 bg-neutral-800 rounded p-2 text-sm">
           Are you sure you want to delete?<br>
           <div class="flex justify-center gap-3 mt-2">
@@ -135,13 +129,11 @@
           </div>
         </div>
       </div>
-      <!-- Add new (card view) -->
       <div v-if="addingNew" class="rounded-xl bg-neutral-900 shadow-md p-4 border border-neutral-700 mt-4 space-y-2">
         <input v-model="newTransaction.description" type="text" maxlength="100" required
           class="bg-neutral-700 text-white px-2 py-1 rounded w-full text-sm mb-1" placeholder="Description" />
         <input v-model.number="newTransaction.amount" type="number" required
           class="bg-neutral-700 text-white px-2 py-1 rounded w-full text-sm mb-1" placeholder="Amount" />
-        <!-- Created date, read-only and fully shown -->
         <input
           :value="formatDate(today)"
           readonly
@@ -202,7 +194,6 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import { getUserAccounts } from '../services/account'
 import { getAllCategories, getScheduledTransactions, deleteScheduledTransaction, createScheduledTransaction } from '../services/transaction'
 
-// Date logic
 const today = new Date()
 const tomorrow = new Date()
 tomorrow.setDate(today.getDate() + 1)
@@ -214,7 +205,6 @@ const categories = ref([])
 const deleteConfirmId = ref(null)
 const addingNew = ref(false)
 
-// New transaction
 const newTransaction = ref({
   description: '',
   amount: null,
@@ -225,7 +215,6 @@ const newTransaction = ref({
   categoryName: ''
 })
 
-// Fetch data
 async function fetchAll() {
   loading.value = true
   try {
@@ -251,7 +240,6 @@ function accountName(id) {
   return acc ? acc.accountName : 'Unknown'
 }
 
-// Delete logic
 function showDeleteConfirm(id) {
   deleteConfirmId.value = id
 }
@@ -266,7 +254,6 @@ async function confirmDelete(id) {
   }
 }
 
-// Add logic
 function startAdd() {
   addingNew.value = true
   newTransaction.value = {

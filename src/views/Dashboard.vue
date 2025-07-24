@@ -95,6 +95,8 @@ function fetchLastMonthExpenses() {
   
 }
 
+
+
 onMounted(async() => {
   await fetchAccounts()
   fetchBudget()

@@ -8,7 +8,7 @@ import Transactions from '../views/Transactions.vue';
 import Accounts from '../views/Accounts.vue';
 import NotFound from '../views/NotFound.vue';
 import addAccount from '../views/addAccount.vue';
-import {  clearUserData, isAuthenticated } from '../store/user';
+import {  clearUserData, isExpired } from '../store/user';
 import addTransaction from '../views/addTransaction.vue';
 import UserSettings from '../views/UserSettings.vue';
 import BudgetSettings from '../views/BudgetSettings.vue';
@@ -89,7 +89,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-  if (to.meta.requiresAuth && !isAuthenticated() ) {
+  if (to.meta.requiresAuth && isExpired() ) {
 
     next('/login')
     clearUserData();
